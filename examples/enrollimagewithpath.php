@@ -5,12 +5,12 @@
 <body>
 <h2>Enrolling an Image Using a File Path</h2>
 <i>This example enrolls the following image</i><br />
-<img src="images/sample.jpg" />
+<img src="assets/images/sample.jpg" />
 <?php
 
 //* * * * include the wrapper class
 include('../Kairos.php');
-include('helper.php');
+include('assets/helper.php');
 
 //* * * * sample api credentials (works for example)
 $app_id  = 'e2a8eaa7';
@@ -23,9 +23,9 @@ $Kairos  = new Kairos($app_id, $api_key);
  In this example, we enroll a
  subject into a gallery using a
  path to an image file. */
-$gallery_id = 'gallery1';
-$subject_id = 'liz';
-$image_path = 'images/sample.jpg';
+$gallery_id = 'people';
+$subject_id = 'liz2';
+$image_path = 'assets/images/sample.jpg';
 $response = $Kairos->enrollImageWithPath($image_path, $gallery_id, $subject_id);
 
 echo '<br /><b>Response:</b><br />';

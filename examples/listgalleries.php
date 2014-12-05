@@ -1,11 +1,10 @@
 <html>
 <head>
-<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 </head>
 <body>
-<h2>Enrolling an Image Using Image Data</h2>
-<i>This example enrolls the following image</i><br />
-<img src="assets/images/sample.jpg" />
+<h2>List Galleries</h2>
+<i>This example returns a list of galleries you created</i><br />
 <?php
 
 //* * * * include the wrapper class
@@ -20,14 +19,8 @@ $api_key = '4092e4a45070bca728644e9285f084b4';
 $Kairos  = new Kairos($app_id, $api_key);
 
 /*
- In this example, we enroll a
- subject into a gallery using 
- base64 image data. */
-$gallery_id = 'gallery1';
-$subject_id = 'liz';
-$image_path = 'assets/images/sample.jpg';
-$image_data = imageDataFromFilePath($image_path);
-$response = $Kairos->enrollImageWithData($image_data, $gallery_id, $subject_id);
+ In this example, we request a list of all galleries */
+$response = $Kairos->listGalleries();
 
 echo '<br /><b>Response:</b><br />';
 echo '<div class="text-left" style="padding:10px;border:1px solid rgba(51, 51, 51, 0.08);background-color: rgba(204, 204, 204, 0.26);"><br />';

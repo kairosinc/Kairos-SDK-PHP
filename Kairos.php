@@ -292,7 +292,7 @@ class Kairos {
 
     		$ch = curl_init();
 
-    		curl_setopt($ch, CURLOPT_URL,            $this->hostname . "gallery/list" );
+    		curl_setopt($ch, CURLOPT_URL,            $this->hostname . "gallery/list_all" );
     		curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
     		curl_setopt($ch, CURLOPT_POSTFIELDS,     $request);
     		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -383,6 +383,7 @@ class Kairos {
 
     	$request_params = array(
     							"gallery_name" => $gallery_id, 
+                  "subject_id" => $subject_id
     							);
 
     	// add options if provided

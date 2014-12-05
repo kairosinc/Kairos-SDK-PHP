@@ -5,12 +5,12 @@
 <body>
 <h2>Detecting Image Attributes Using Image Data</h2>
 <i>This example enrolls the following image</i><br />
-<img src="images/sample.jpg" />
+<img src="assets/images/sample.jpg" />
 <?php
 
 //* * * * include the wrapper class
 include('../Kairos.php');
-include('helper.php');
+include('assets/helper.php');
 
 //* * * * sample api credentials (works for example)
 $app_id  = 'e2a8eaa7';
@@ -23,7 +23,7 @@ $Kairos  = new Kairos($app_id, $api_key);
  In this example, we enroll a
  subject into a gallery using a
  path to an image file. */
-$image_path = 'images/sample.jpg';
+$image_path = 'assets/images/sample.jpg';
 $image_data = imageDataFromFilePath($image_path);
 $options = array('selector'=>'FULL');
 $response = $Kairos->detectImageWithData($image_data);
