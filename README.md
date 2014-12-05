@@ -15,13 +15,13 @@ _Thanks to contributions by some of our customers, we also have [Ruby](https://g
 
 
 ## How to Do a Quick Demo
-If you just want to do a quick test run, open the **example script** that is included with the SDK and follow these steps:
+If you just want to do a quick test run, open one of the **example scripts** included with the SDK and follow these steps:
 
 1. [Create your free developer account](https://www.kairos.com/signup)
 2. Log into the Kairos Developer Dashboard
 3. Create an application and copy your **App Id** & **App Key**
 3. Paste them into the constructor method in example.php 
-4. Open the script in your **browser** and it will run.
+4. Run the script in your **browser** and wait for the response.
 
 
 
