@@ -140,7 +140,7 @@ This method returns a list of all subjects for a given gallery:
 
 ```
 $gallery_id = 'friends1';
-$response = $Kairos->listSubjectsForGallery($gallery_id);
+$response   = $Kairos->listSubjectsForGallery($gallery_id);
 ```
 
 ## Remove a Subject
@@ -149,7 +149,7 @@ This method removes a subject from given gallery:
 
 ```
 $subject_id = 'dave';
-$response = $Kairos->removeSubjectFromGallery($subject_id);
+$response   = $Kairos->removeSubjectFromGallery($subject_id);
 ```
 
     
