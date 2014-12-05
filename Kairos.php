@@ -130,7 +130,7 @@ class Kairos {
 
 
 
-	public function detectWithImagePath($image_path, $options = array())
+	public function detectImageWithPath($image_path, $options = array())
 	{
 
 		$image_data = $this->imageDataFromFilePath($image_path);
@@ -145,7 +145,7 @@ class Kairos {
 
 
 
-	public function detectWithImageData($image_data, $options = array())
+	public function detectImageWithData($image_data, $options = array())
 	{
 
 		if($this->authenticationProvided() == false)
@@ -200,7 +200,7 @@ class Kairos {
 
 
 
-	public function recognizeWithImagePath($image_path, $gallery_id, $options = array())
+	public function recognizeImageWithPath($image_path, $gallery_id, $options = array())
 	{
 
 		$image_data = $this->imageDataFromFilePath($image_path);
@@ -214,7 +214,7 @@ class Kairos {
 
 
 
-	public function recognizeWithImageData($image_data, $gallery_id, $options = array())
+	public function recognizeImageWithData($image_data, $gallery_id, $options = array())
 	{
 
 		if($this->authenticationProvided() == false)
