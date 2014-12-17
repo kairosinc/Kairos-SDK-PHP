@@ -20,7 +20,7 @@ If you just want to do a quick test run, open one of the **example scripts** inc
 1. [Create your free developer account](https://www.kairos.com/signup)
 2. Log into the Kairos Developer Dashboard
 3. Create an application and copy your **App Id** & **App Key**
-3. Paste them into the constructor method in example.php 
+3. Paste them into the constructor method in one of the example scripts.
 4. Run the script in your **browser** and wait for the response.
 
 
@@ -149,7 +149,8 @@ This method removes a subject from given gallery:
 
 ```
 $subject_id = 'dave';
-$response   = $Kairos->removeSubjectFromGallery($subject_id);
+$gallery_id = 'friends1';
+$response   = $Kairos->removeSubjectFromGallery($subject_id, $gallery_id);
 ```
 
     
