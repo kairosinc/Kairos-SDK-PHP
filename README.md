@@ -3,7 +3,7 @@ Kairos SDK (PHP)
 
 Kairos is the easist way add **Face-Recognition** to your web applications. Our API provides a full-featured and robust Face-Recognition backend, right out of the box. This is the PHP wrapper for the [Kairos Facial Recognition API](https://www.kairos.com). The package includes a **class** _(Kairos.php)_ you can use as an easy client to the API. Continue reading to learn how to integrate Kairos into your web application.
 
-_Thanks to contributions by some of our customers, we also have [Ruby](https://github.com/kany/kairos-api) and [.NET](https://github.com/humbywan/Kairos.Net) wrappers available. Also see our [iOS SDK](https://github.com/kairosinc/Kairos-SDK-iOS)._
+_Thanks to contributions by some of our customers, we also have [Ruby](https://github.com/kany/kairos-api) and [.NET](https://github.com/humbywan/Kairos.Net) wrappers available. Also see our [Javascript SDK](https://github.com/kairosinc/Kairos-SDK-Javascript) and our [iOS SDK](https://github.com/kairosinc/Kairos-SDK-iOS)._
 
 ## What You'll Need
 * An environment configured to run PHP scripts.
