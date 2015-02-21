@@ -49,8 +49,8 @@ Before you can make API calls you'll need to pass Kairos your credentials **App 
 
 ```
 // instantiates a new instance
-$app_id  = 'arq3241';
-$api_key = 's82nrh2ns92nse2ha712net9rk3nter3';
+$app_id  = 'your_app_id';
+$api_key = 'your_application_key';
 $Kairos  = new Kairos($app_id, $api_key);
 ```
 
