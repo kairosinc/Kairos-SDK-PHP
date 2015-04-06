@@ -1,7 +1,7 @@
 Kairos SDK (PHP)
 ==============
 
-Kairos is the easist way add **Face-Recognition** to your web applications. Our API provides a full-featured and robust Face-Recognition backend, right out of the box. This is the PHP wrapper for the [Kairos Facial Recognition API](https://www.kairos.com). The package includes a **class** _(Kairos.php)_ you can use as an easy client to the API. Continue reading to learn how to integrate Kairos into your web application.
+Kairos is the easist way add **Face-Recognition** to your web applications. Our API provides a full-featured and robust Face-Recognition backend, right out of the box. This is the PHP wrapper for the [Kairos Face Recognition API](https://www.kairos.com). The package includes a **class** _(Kairos.php)_ you can use as an easy client to the API. Continue reading to learn how to integrate Kairos into your web application.
 
 _Thanks to contributions by some of our customers, we also have [Ruby](https://github.com/kany/kairos-api) and [.NET](https://github.com/humbywan/Kairos.Net) wrappers available. Also see our [Javascript SDK](https://github.com/kairosinc/Kairos-SDK-Javascript) and our [iOS SDK](https://github.com/kairosinc/Kairos-SDK-iOS)._
 
@@ -107,7 +107,7 @@ $response     = $Kairos->recognizeImageWithData($base64_data);
     
 ## Detect Image Attributes Using a File Path
 
-The **Detect** method takes an image of a subject and **returns various attributes pertaining to the face features**. The detect methods also accept an optional 'selector' parameter, allowing you to tweak the scope of the response ([see docs](https://www.kairos.com/docs) for more info on the detect selector). Here's an example of using detect via method that accepts a path to an image file, sends it to the API, and returns face attributes:    
+The **Detect** method takes an image of a subject and **returns various attributes pertaining to the face features**. The detect methods also accept an optional 'selector' parameter, allowing you to tweak the scope of the response ([see docs](https://www.kairos.com/docs/face-recognition) for more info on the detect selector). Here's an example of using detect via method that accepts a path to an image file, sends it to the API, and returns face attributes:    
 
 ```
 $path       = '/images/myphotos/myphoto123.png';
@@ -117,7 +117,7 @@ $response   = $Kairos->detectImageWithPath($path);
     
 ## Detect Image Attributes Using Image Data
 
-The **Detect** method takes an image of a subject and **returns various attributes pertaining to the face features**. The detect methods also accept an optional 'selector' parameter, allowing you to tweak the scope of the response ([see docs](https://www.kairos.com/docs) for more info on the detect selector). Here's an example of using detect via method that accepts image data in base64 format, sends it to the API, and returns face attributes:    
+The **Detect** method takes an image of a subject and **returns various attributes pertaining to the face features**. The detect methods also accept an optional 'selector' parameter, allowing you to tweak the scope of the response ([see docs](https://www.kairos.com/docs/face-recognition) for more info on the detect selector). Here's an example of using detect via method that accepts image data in base64 format, sends it to the API, and returns face attributes:    
 
 ```
 $base64_data  = 'iVBORw0KGgoAAA ... ABJRU5ErkJggg==\r\n';
