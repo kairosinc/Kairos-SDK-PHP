@@ -373,6 +373,8 @@ class Kairos {
 
   }
 
+
+
   public function removeSubjectFromGallery($subject_id, $gallery_id, $options = array())
   {
 
@@ -424,6 +426,68 @@ class Kairos {
 
       return $response;
   }
+
+
+
+
+
+
+
+  public function removeGallery($gallery_id, $options = array())
+  {
+
+
+    if($this->authenticationProvided() == false)
+    {
+      return 'set your app_id and api_key before calling this method';
+    }
+
+      $request_params = array(
+                  "gallery_name" => $gallery_id, 
+                  );
+
+      // add options if provided
+      foreach($options as $key => $value)
+      {
+          $request_params[$key] = $value;
+      }
+
+      // build request string
+      $request = json_encode($request_params);
+
+      try
+      {
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL,            $this->hostname . "gallery/remove" );
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS,     $request);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, 
+            array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($request),
+                'app_id: ' . $this->app_id,
+                'app_key: '. $this->api_key)
+            );
+
+        $response = curl_exec($ch);
+
+        curl_close($ch);
+
+      }
+      catch(Exception $ex)
+      {
+          return 'there was a problem';
+      }
+
+      return $response;
+
+  }
+
+  
+
 
 
 }

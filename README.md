@@ -143,6 +143,19 @@ $gallery_id = 'friends1';
 $response   = $Kairos->listSubjectsForGallery($gallery_id);
 ```
 
+
+
+## Remove a Gallery
+
+This method removes a given gallery:
+
+```
+$gallery_id = 'friends1';
+$response   = $Kairos->removeGallery($gallery_id);
+```
+
+
+
 ## Remove a Subject
 
 This method removes a subject from given gallery:
