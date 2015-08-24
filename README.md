@@ -62,9 +62,9 @@ The **Enroll** method **registers a face for later recognitions**. Here's an exa
 
 ```
 $path       = '/images/myphotos/myphoto123.png';
-$subject_id = 'eric';
+$subject_id = 'elizabeth';
 $gallery_id = 'friends1';
-$response   = $Kairos->enrollImageWithPath($path, $subject_id, $gallery_id);
+$response   = $Kairos->enrollImageWithPath($path, $gallery_id, $subject_id);
 ```
 
 
@@ -75,9 +75,9 @@ The **Enroll** method **registers a face for later recognitions**. Here's an exa
 
 ```
 $base64_data = 'iVBORw0KGgoAAA ... ABJRU5ErkJggg==\r\n';
-$subject_id  = 'eric';
+$subject_id  = 'elizabeth';
 $gallery_id  = 'friends1';
-$response    = $Kairos->enrollImageWithData($base64_data, $subject_id, $gallery_id);
+$response    = $Kairos->enrollImageWithData($base64_data, $gallery_id, $subject_id);
 ```
 
 
