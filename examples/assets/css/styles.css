@@ -1,0 +1,27 @@
+/* 
+	styles for methods_test.php 		
+ 	created:; November 2016 
+	author: Steve Rucker
+*/
+
+#view_data {
+	padding: 10px 0;
+	color: #ff0000;
+	word-wrap: break-word;
+}
+.method-test {
+	margin-left: 30px;
+}
+.glyphicon {
+	float: left;
+	margin-top: 2px;
+	margin-right: 10px;
+}
+form {
+	margin-left: 30px;
+}
+#loader {
+	display: none;
+	width: 250px;
+	float: left;
+}

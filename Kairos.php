@@ -1,46 +1,25 @@
 <?php
 
-/* 
- authored by Eric Turner 
- Copyright 2014 Kairos AR INC
- */
+//------------------------------------
+// Kairos.php
+// sends curl requests to Kairos ID API  
+// created: November 2016
+// author: Steve Rucker
+//------------------------------------
 
 
 class Kairos {
-
-
 
   protected $hostname;
   protected $app_id;
   protected $api_key;
 
+  public function __construct($app_id, $api_key) {
 
-
-  function __construct($app_id, $api_key) {
-
-       $this->hostname = 'http://api.kairos.com/';
+       $this->hostname = 'http://api-dev.kairos.com/';
        $this->app_id = $app_id;
        $this->api_key = $api_key;
     }
-
-
-
-    private function imageDataFromFilePath($path)
-  {
-
-    $base64 = "";
-
-        if($fp = fopen($path,"rb", 0)) 
-        { 
-            $image = fread($fp,filesize($path)); 
-            fclose($fp); 
-            $base64 = chunk_split(base64_encode($image));      
-    }
-
-    return $base64;
-  }
-
-
 
 
   private function authenticationProvided()
@@ -53,222 +32,7 @@ class Kairos {
     return false;
   }
 
-
-
-
-
-
-  public function enrollImageWithPath($image_path, $gallery_id, $subject_id, $options = array())
-  {
-
-    $image_data = $this->imageDataFromFilePath($image_path);
-
-    $response = $this->enrollImageWithData($image_data, $gallery_id, $subject_id, $options);
-
-    return $response;
-  }
-
-
-
-
-
-
-  public function enrollImageWithData($image_data, $gallery_id, $subject_id, $options = array())
-  {
-
-    if($this->authenticationProvided() == false)
-    {
-      return 'set your app_id and api_key before calling this method';
-    }
-
-      $request_params = array(
-                  "image"        => $image_data, 
-                  "gallery_name" => $gallery_id, 
-                  "subject_id"   => $subject_id );
-
-      // add options if provided
-      foreach($options as $key => $value)
-      {
-          $request_params[$key] = $value;
-      }
-
-      // build request string
-      $request = json_encode($request_params);
-
-      try
-      {
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL,            $this->hostname . "enroll" );
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
-        curl_setopt($ch, CURLOPT_POSTFIELDS,     $request);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, 
-            array(
-                'Content-Type: application/json',
-                'Content-Length: ' . strlen($request),
-                'app_id: ' . $this->app_id,
-                'app_key: '. $this->api_key)
-            );
-
-        $response = curl_exec($ch);
-
-        curl_close($ch);
-
-      }
-      catch(Exception $ex)
-      {
-          return 'there was a problem';
-      }
-
-      return $response;
-  }
-
-
-
-
-
-
-  public function detectImageWithPath($image_path, $options = array())
-  {
-
-    $image_data = $this->imageDataFromFilePath($image_path);
-
-    $response = $this->detectImageWithData($image_data, $options);
-
-    return $response;
-  }
-
-
-
-
-
-
-  public function detectImageWithData($image_data, $options = array())
-  {
-
-    if($this->authenticationProvided() == false)
-    {
-      return 'set your app_id and api_key before calling this method';
-    }
-
-      $request_params = array(
-                  "image"  =>  $image_data
-                  );
-
-      // add options if provided
-      foreach($options as $key => $value)
-      {
-          $request_params[$key] = $value;
-      }
-
-      // build request string
-      $request = json_encode($request_params);
-
-      try
-      {
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL,            $this->hostname . "detect" );
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
-        curl_setopt($ch, CURLOPT_POSTFIELDS,     $request);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, 
-            array(
-                'Content-Type: application/json',
-                'Content-Length: ' . strlen($request),
-                'app_id: ' . $this->app_id,
-                'app_key: '. $this->api_key)
-            );
-
-        $response = curl_exec($ch);
-
-        curl_close($ch);
-
-      }
-      catch(Exception $ex)
-      {
-          return 'there was a problem';
-      }
-
-      return $response;
-
-  }
-
-
-
-
-  public function recognizeImageWithPath($image_path, $gallery_id, $options = array())
-  {
-
-    $image_data = $this->imageDataFromFilePath($image_path);
-
-    $response = $this->recognizeImageWithData($image_data, $gallery_id, $options);
-
-    return $response;
-  }
-
-
-
-
-
-  public function recognizeImageWithData($image_data, $gallery_id, $options = array())
-  {
-
-    if($this->authenticationProvided() == false)
-    {
-      return 'set your app_id and api_key before calling this method';
-    }
-
-      $request_params = array(
-                  "image"        => $image_data, 
-                  "gallery_name" => $gallery_id, 
-                  );
-
-      // add options if provided
-      foreach($options as $key => $value)
-      {
-          $request_params[$key] = $value;
-      }
-
-      // build request string
-      $request = json_encode($request_params);
-
-      try
-      {
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL,            $this->hostname . "recognize" );
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
-        curl_setopt($ch, CURLOPT_POSTFIELDS,     $request);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, 
-            array(
-                'Content-Type: application/json',
-                'Content-Length: ' . strlen($request),
-                'app_id: ' . $this->app_id,
-                'app_key: '. $this->api_key)
-            );
-
-        $response = curl_exec($ch);
-
-        curl_close($ch);
-
-      }
-      catch(Exception $ex)
-      {
-          return 'there was a problem';
-      }
-
-      return $response;
-  }
-
-
-
-  public function listGalleries($options = array())
+  public function viewGalleries($args = array())
   {
 
     if($this->authenticationProvided() == false)
@@ -277,12 +41,6 @@ class Kairos {
     }
 
       $request_params = array();
-
-      // add options if provided
-      foreach($options as $key => $value)
-      {
-          $request_params[$key] = $value;
-      }
 
       // build request string
       $request = json_encode($request_params);
@@ -318,26 +76,22 @@ class Kairos {
   }
 
 
-
-
-  public function listSubjectsForGallery($gallery_id, $options = array())
+  public function enroll($args = array())
   {
 
+    // to get base64
+    // $image_data = base64_encode(file_get_contents($args["image_path"]));
 
     if($this->authenticationProvided() == false)
     {
       return 'set your app_id and api_key before calling this method';
     }
 
-      $request_params = array(
-                  "gallery_name" => $gallery_id, 
-                  );
 
-      // add options if provided
-      foreach($options as $key => $value)
-      {
-          $request_params[$key] = $value;
-      }
+      $request_params = array(
+                  "image"        => $args["image"], 
+                  "gallery_name" => $args["gallery_name"], 
+                  "subject_id"   => $args["subject_id"] );
 
       // build request string
       $request = json_encode($request_params);
@@ -347,7 +101,7 @@ class Kairos {
 
         $ch = curl_init();
 
-        curl_setopt($ch, CURLOPT_URL,            $this->hostname . "gallery/view" );
+        curl_setopt($ch, CURLOPT_URL,            $this->hostname . "enroll" );
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS,     $request);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -370,12 +124,58 @@ class Kairos {
       }
 
       return $response;
+  }
+
+
+  public function viewSubjectsInGallery($args = array())
+  {
+
+    if($this->authenticationProvided() == false)
+    {
+      return 'set your app_id and api_key before calling this method';
+    }
+
+    $request_params = array(
+      "gallery_name" => $args["gallery_name"], 
+    );
+
+    // build request string
+    $request = json_encode($request_params);
+
+    try
+    {
+
+      $ch = curl_init();
+
+      curl_setopt($ch, CURLOPT_URL,            $this->hostname . "gallery/view" );
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
+      curl_setopt($ch, CURLOPT_POSTFIELDS,     $request);
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, 
+          array(
+              'Content-Type: application/json',
+              'Content-Length: ' . strlen($request),
+              'app_id: ' . $this->app_id,
+              'app_key: '. $this->api_key)
+          );
+
+      $response = curl_exec($ch);
+
+      curl_close($ch);
+
+    }
+    catch(Exception $ex)
+    {
+        return 'there was a problem';
+    }
+
+    return $response;
 
   }
 
 
 
-  public function removeSubjectFromGallery($subject_id, $gallery_id, $options = array())
+  public function removeSubjectFromGallery($args = array())
   {
 
     if($this->authenticationProvided() == false)
@@ -384,15 +184,9 @@ class Kairos {
     }
 
       $request_params = array(
-                  "gallery_name" => $gallery_id, 
-                  "subject_id" => $subject_id
-                  );
-
-      // add options if provided
-      foreach($options as $key => $value)
-      {
-          $request_params[$key] = $value;
-      }
+        "gallery_name" => $args["gallery_name"], 
+        "subject_id" => $args["subject_id"],
+      );
 
       // build request string
       $request = json_encode($request_params);
@@ -427,13 +221,7 @@ class Kairos {
       return $response;
   }
 
-
-
-
-
-
-
-  public function removeGallery($gallery_id, $options = array())
+  public function removeGallery($args = array())
   {
 
 
@@ -443,14 +231,9 @@ class Kairos {
     }
 
       $request_params = array(
-                  "gallery_name" => $gallery_id, 
-                  );
+        "gallery_name" => $args["gallery_name"]
+      );
 
-      // add options if provided
-      foreach($options as $key => $value)
-      {
-          $request_params[$key] = $value;
-      }
 
       // build request string
       $request = json_encode($request_params);
@@ -461,6 +244,147 @@ class Kairos {
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_URL,            $this->hostname . "gallery/remove" );
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS,     $request);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, 
+            array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($request),
+                'app_id: ' . $this->app_id,
+                'app_key: '. $this->api_key)
+            );
+
+        $response = curl_exec($ch);
+
+        curl_close($ch);
+
+      }
+      catch(Exception $ex)
+      {
+          return 'there was a problem';
+      }
+
+      return $response;
+
+  }
+
+
+  public function recognize($args = array())
+  {
+
+    if($this->authenticationProvided() == false)
+    {
+      return 'set your app_id and api_key before calling this method';
+    }
+
+      $request_params = array(
+        "image"  =>  $args["image"],
+        "gallery_name"  =>  $args["gallery_name"]
+      );
+
+      // build request string
+      $request = json_encode($request_params);
+
+      try
+      {
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL,            $this->hostname . "recognize" );
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS,     $request);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, 
+            array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($request),
+                'app_id: ' . $this->app_id,
+                'app_key: '. $this->api_key)
+            );
+
+        $response = curl_exec($ch);
+
+        curl_close($ch);
+
+      }
+      catch(Exception $ex)
+      {
+          return 'there was a problem';
+      }
+
+      return $response;
+  }
+
+  public function detect($args = array())
+  {
+
+    if($this->authenticationProvided() == false)
+    {
+      return 'set your app_id and api_key before calling this method';
+    }
+
+      $request_params = array(
+        "image"  =>  $args["image"]
+      );
+
+      // build request string
+      $request = json_encode($request_params);
+
+      try
+      {
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL,            $this->hostname . "detect" );
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
+        curl_setopt($ch, CURLOPT_POSTFIELDS,     $request);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, 
+            array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($request),
+                'app_id: ' . $this->app_id,
+                'app_key: '. $this->api_key)
+            );
+
+        $response = curl_exec($ch);
+
+        curl_close($ch);
+
+      }
+      catch(Exception $ex)
+      {
+          return 'there was a problem';
+      }
+
+      return $response;
+
+  }
+
+  public function verify($args = array())
+  {
+
+    if($this->authenticationProvided() == false)
+    {
+      return 'set your app_id and api_key before calling this method';
+    }
+
+      $request_params = array(
+        "image"  =>  $args["image"],
+        "subject_id"  =>  $args["subject_id"],
+        "gallery_name"  =>  $args["gallery_name"]
+      );
+
+      // build request string
+      $request = json_encode($request_params);
+
+      try
+      {
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL,            $this->hostname . "verify" );
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST,  "POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS,     $request);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

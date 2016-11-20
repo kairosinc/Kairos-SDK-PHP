@@ -43,18 +43,6 @@ If you just want to do a quick test run, open one of the **example scripts** inc
  include("Kairos.php");
 ```
 
-## Authenticate Once
-
-Before you can make API calls you'll need to pass Kairos your credentials **App Id** and **App Key** (You only need to do this once). Paste your App Id and App Key into the constructor method like so:
-
-```
-// instantiates a new instance
-$app_id  = 'your_app_id';
-$api_key = 'your_application_key';
-$Kairos  = new Kairos($app_id, $api_key);
-```
-
-
 
 ## Enroll an Image Using a File Path
 
