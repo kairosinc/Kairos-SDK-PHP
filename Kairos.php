@@ -12,19 +12,19 @@ class Kairos {
 
   protected $hostname;
   protected $app_id;
-  protected $api_key;
+  protected $app_key;
 
-  public function __construct($app_id, $api_key) {
+  public function __construct($app_id, $app_key) {
 
-       $this->hostname = 'http://api-dev.kairos.com/';
+       $this->hostname = 'http://api.kairos.com/';
        $this->app_id = $app_id;
-       $this->api_key = $api_key;
+       $this->app_key = $app_key;
     }
 
 
   private function authenticationProvided()
   {
-    if(count($this->api_key) > 0 && count($this->app_id) > 0)
+    if(count($this->app_key) > 0 && count($this->app_id) > 0)
     {
       return true;
     }
@@ -37,7 +37,7 @@ class Kairos {
 
     if($this->authenticationProvided() == false)
     {
-      return 'set your app_id and api_key before calling this method';
+      return 'set your app_id and app_key before calling this method';
     }
 
       $request_params = array();
@@ -59,7 +59,7 @@ class Kairos {
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($request),
                 'app_id: ' . $this->app_id,
-                'app_key: '. $this->api_key)
+                'app_key: '. $this->app_key)
             );
 
         $response = curl_exec($ch);
@@ -84,7 +84,7 @@ class Kairos {
 
     if($this->authenticationProvided() == false)
     {
-      return 'set your app_id and api_key before calling this method';
+      return 'set your app_id and app_key before calling this method';
     }
 
 
@@ -110,7 +110,7 @@ class Kairos {
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($request),
                 'app_id: ' . $this->app_id,
-                'app_key: '. $this->api_key)
+                'app_key: '. $this->app_key)
             );
 
         $response = curl_exec($ch);
@@ -132,7 +132,7 @@ class Kairos {
 
     if($this->authenticationProvided() == false)
     {
-      return 'set your app_id and api_key before calling this method';
+      return 'set your app_id and app_key before calling this method';
     }
 
     $request_params = array(
@@ -156,7 +156,7 @@ class Kairos {
               'Content-Type: application/json',
               'Content-Length: ' . strlen($request),
               'app_id: ' . $this->app_id,
-              'app_key: '. $this->api_key)
+              'app_key: '. $this->app_key)
           );
 
       $response = curl_exec($ch);
@@ -180,7 +180,7 @@ class Kairos {
 
     if($this->authenticationProvided() == false)
     {
-      return 'set your app_id and api_key before calling this method';
+      return 'set your app_id and app_key before calling this method';
     }
 
       $request_params = array(
@@ -205,7 +205,7 @@ class Kairos {
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($request),
                 'app_id: ' . $this->app_id,
-                'app_key: '. $this->api_key)
+                'app_key: '. $this->app_key)
             );
 
         $response = curl_exec($ch);
@@ -227,7 +227,7 @@ class Kairos {
 
     if($this->authenticationProvided() == false)
     {
-      return 'set your app_id and api_key before calling this method';
+      return 'set your app_id and app_key before calling this method';
     }
 
       $request_params = array(
@@ -252,7 +252,7 @@ class Kairos {
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($request),
                 'app_id: ' . $this->app_id,
-                'app_key: '. $this->api_key)
+                'app_key: '. $this->app_key)
             );
 
         $response = curl_exec($ch);
@@ -275,7 +275,7 @@ class Kairos {
 
     if($this->authenticationProvided() == false)
     {
-      return 'set your app_id and api_key before calling this method';
+      return 'set your app_id and app_key before calling this method';
     }
 
       $request_params = array(
@@ -300,7 +300,7 @@ class Kairos {
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($request),
                 'app_id: ' . $this->app_id,
-                'app_key: '. $this->api_key)
+                'app_key: '. $this->app_key)
             );
 
         $response = curl_exec($ch);
@@ -321,7 +321,7 @@ class Kairos {
 
     if($this->authenticationProvided() == false)
     {
-      return 'set your app_id and api_key before calling this method';
+      return 'set your app_id and app_key before calling this method';
     }
 
       $request_params = array(
@@ -345,7 +345,7 @@ class Kairos {
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($request),
                 'app_id: ' . $this->app_id,
-                'app_key: '. $this->api_key)
+                'app_key: '. $this->app_key)
             );
 
         $response = curl_exec($ch);
@@ -367,7 +367,7 @@ class Kairos {
 
     if($this->authenticationProvided() == false)
     {
-      return 'set your app_id and api_key before calling this method';
+      return 'set your app_id and app_key before calling this method';
     }
 
       $request_params = array(
@@ -393,7 +393,7 @@ class Kairos {
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($request),
                 'app_id: ' . $this->app_id,
-                'app_key: '. $this->api_key)
+                'app_key: '. $this->app_key)
             );
 
         $response = curl_exec($ch);

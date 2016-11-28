@@ -1,7 +1,7 @@
 <?php
 
 $app_id = $_POST["auth"]["app_id"];
-$api_key = $_POST["auth"]["api_key"];
+$app_key = $_POST["auth"]["app_key"];
 $phpMethod = $_POST["phpMethod"];
 $args = $_POST["args"];
 
@@ -11,7 +11,7 @@ if ($args == null) {
 
 include('../Kairos.php');
 
-$Kairos  = new Kairos($app_id, $api_key);
+$Kairos  = new Kairos($app_id, $app_key);
 
 $response = $Kairos->$phpMethod($args);
 

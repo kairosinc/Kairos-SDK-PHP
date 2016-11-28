@@ -24,8 +24,11 @@ include('../Kairos.php');
     <div class="container">
       	<div class="row">
         	<h3>Enter API Keys:</h3>
-          		API ID: <input type="text" class="app_id" value="">
-            	API KEY: <input type="text" class="api_key" value="">
+            <form>
+          		APP ID: <input type="text" class="app_id" value="40236362">
+            	APP KEY: <input type="text" class="app_key" value="e811c571d86aa12f588acbc79c412715">
+              <input type="button" id="validateKeys" value="Validate" />
+            </form>
       	</div>
       	<div class="row">
         	<div id="apiMethodsTests">
@@ -42,7 +45,8 @@ include('../Kairos.php');
             <div class="method-test">
               	<span class="glyphicon glyphicon-play"></span><h4>enroll() Method</h4>
               	<form id="enrollForm">
-                	  Image: <input type="text" class="image" name="Image">
+                	  Image (public URL or base64 data): <input type="text" class="image" name="Image">
+                    Image (local file): <input type="file" class="image-upload" name="Image Upload">
                   	Gallery Name: <input type="text" class="gallery_name" name="Gallery Name">
                   	Subject ID: <input type="text" class="subject_id" name="Subject ID">
                   	<input type="button" id="testEnroll" value="Test" />
@@ -81,7 +85,8 @@ include('../Kairos.php');
           <div class="method-test">
               <span class="glyphicon glyphicon-play"></span><h4>recognize() Method</h4>
               <form id="recognizeForm">
-                  Image: <input type="text" class="image" name="Image">
+                  Image (public URL or base64 data): <input type="text" class="image" name="Image">
+                  Image (local file): <input type="file" class="image-upload" name="Image Upload">
                   Gallery Name: <input type="text" class="gallery_name" name="Gallery Name">
                   <input type="button" id="testRecognize" value="Test" />
               </form>
@@ -90,8 +95,9 @@ include('../Kairos.php');
       	<div class="row">
         	<div class="method-test">
           		<span class="glyphicon glyphicon-play"></span><h4>detect() Method</h4>
-          		<form id="detectForm">
-            		Image: <input type="text" class="image" name="Image">
+          		<form id="detectForm" enctype="multipart/form-data">
+            		  Image (public URL or base64 data): <input type="text" class="image" name="Image">
+                  Image (local file): <input type="file" class="image-upload" name="Image Upload">
               		<input type="button" id="testDetect" value="Test" />
           		</form>
         	</div>
@@ -100,7 +106,8 @@ include('../Kairos.php');
           <div class="method-test">
               <span class="glyphicon glyphicon-play"></span><h4>verify() Method</h4>
               <form id="verifyForm">
-                  Image: <input type="text" class="image" name="Image">
+                  Image (public URL or base64 data): <input type="text" class="image" name="Image">
+                  Image (local file): <input type="file" class="image-upload" name="Image Upload">
                   Subject ID: <input type="text" class="subject_id" name="Subject ID">
                   Gallery Name: <input type="text" class="gallery_name" name="Gallery Name">
                   <input type="button" id="testVerify" value="Test" />

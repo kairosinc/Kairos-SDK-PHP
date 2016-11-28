@@ -19,7 +19,7 @@ If you just want to do a quick test run, follow these steps:
 2. Log into the Kairos Developer Dashboard
 3. Create an application and copy your **App Id** & **App Key**
 3. Run `methods_test.php` in your browser.
-4. Enter your app_id and api_key, and run the Kairos methods.
+4. Enter your app_id and app_key, and run the Kairos methods.
 
 
 ---
@@ -85,6 +85,7 @@ $subject_id = 'elizabeth';
 $gallery_name = 'friends1';
 $response   = $Kairos->enroll($image, $gallery_name, $subject_id);
 ```
+`The SDK also includes a file upload field, which converts a local image file to base64 data.`
 
 ## Recognize an Image
 
@@ -98,9 +99,11 @@ $gallery_name = 'friends1';
 $response   = $Kairos->recognize($image, $gallery_name);
 ```
 
+`The SDK also includes a file upload field, which converts a local image file to base64 data.`
+
 ## Detect Image Attributes
 
-The **Detect** method takes an image of a subject and **returns various attributes pertaining to the face features**. Here's an example of using detect via method that accepts a path to an image file, sends it to the API, and returns face attributes:    
+The **Detect** method takes an image of a subject and **returns various attributes pertaining to the face features**. Here's an example of the detect method which accepts a path to an image file on your system **or** base64 image data, sends it to the API, and returns face attributes:    
 
 ```
 $image       = '/images/myphotos/myphoto123.png';
@@ -108,6 +111,20 @@ $image       = '/images/myphotos/myphoto123.png';
 $image      = 'iVBORw0KGgoAAA ... ABJRU5ErkJggg==\r\n';
 $response   = $Kairos->detect($image);
 ```
+
+`The SDK also includes a file upload field, which converts a local image file to base64 data.`
+
+## Verify image
+
+The **Verify** method takes an image and verifies that it matches an existing subject in a gallery.  Here's an example of using verify via method that accepts a path to an image file, sends it to the API, and returns face attributes: 
+
+```
+$image       = '/images/myphotos/myphoto123.png';
+(or) 
+$image      = 'iVBORw0KGgoAAA ... ABJRU5ErkJggg==\r\n';
+$response   = $Kairos->detect($image);
+```
+`The SDK also includes a file upload field, which converts a local image file to base64 data.`
 
 ##Support 
 Have an issue? Visit our [Support page](http://www.kairos.com/support) or [create an issue on GitHub](https://github.com/kairosinc/Kairos-SDK-PHP)
