@@ -122,6 +122,8 @@ The **Verify** method takes an image and verifies that it matches an existing su
 $image       = '/images/myphotos/myphoto123.png';
 (or) 
 $image      = 'iVBORw0KGgoAAA ... ABJRU5ErkJggg==\r\n';
+$subject_id = 'elizabeth';
+$gallery_name = 'friends1';
 $response   = $Kairos->detect($image);
 ```
 `The SDK also includes a file upload field, which converts a local image file to base64 data.`
