@@ -25,8 +25,8 @@ include('../Kairos.php');
       	<div class="row">
         	<h3>Enter API Keys:</h3>
             <form>
-          		APP ID: <input type="text" class="app_id" value="40236362">
-            	APP KEY: <input type="text" class="app_key" value="e811c571d86aa12f588acbc79c412715">
+          		APP ID: <input type="text" class="app_id" value="">
+            	APP KEY: <input type="text" class="app_key" value="">
               <input type="button" id="validateKeys" value="Validate" />
             </form>
       	</div>
