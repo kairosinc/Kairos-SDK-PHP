@@ -52,7 +52,10 @@ This method returns a list of all subjects for a given gallery:
 
 ```
 $gallery_name = 'friends1';
-$response   = $Kairos->viewSubjectsInGallery($gallery_name);
+$argumentArray =  array(
+    "gallery_name" => $gallery_name 
+);
+$response   = $Kairos->viewSubjectsInGallery($argumentArray);
 ```
 
 ## Remove a Subject
@@ -62,7 +65,11 @@ This method removes a subject from given gallery:
 ```
 $subject_id = 'dave';
 $gallery_name = 'friends1';
-$response   = $Kairos->removeSubjectFromGallery($subject_id, $gallery_name);
+$argumentArray =  array(
+    "subject_id" => $subject_id,
+    "gallery_name" => $gallery_name 
+);
+$response   = $Kairos->removeSubjectFromGallery($argumentArray);
 ```
 
 ## Remove a Gallery
@@ -71,7 +78,10 @@ This method removes a given gallery:
 
 ```
 $gallery_name = 'friends1';
-$response   = $Kairos->removeGallery($gallery_name);
+$argumentArray =  array(
+    "gallery_name" => $gallery_name 
+);
+$response   = $Kairos->removeGallery($argumentArray);
 ```
 ## Enroll an Image
 
@@ -83,7 +93,12 @@ $image       = '/images/myphotos/myphoto123.png';
 $image      = 'iVBORw0KGgoAAA ... ABJRU5ErkJggg==\r\n';
 $subject_id = 'elizabeth';
 $gallery_name = 'friends1';
-$response   = $Kairos->enroll($image, $gallery_name, $subject_id);
+$argumentArray =  array(
+    "image" => $image,
+    "subject_id" => $subject_id,
+    "gallery_name" => $gallery_name
+);
+$response   = $Kairos->enroll($argumentArray);
 ```
 `The SDK also includes a file upload field, which converts a local image file to base64 data.`
 
@@ -96,7 +111,11 @@ $image       = '/images/myphotos/myphoto123.png';
 (or) 
 $image      = 'iVBORw0KGgoAAA ... ABJRU5ErkJggg==\r\n';
 $gallery_name = 'friends1';
-$response   = $Kairos->recognize($image, $gallery_name);
+$argumentArray =  array(
+    "image" => $image,
+    "gallery_name" => $gallery_name
+);
+$response   = $Kairos->recognize($image, $argumentArray);
 ```
 
 `The SDK also includes a file upload field, which converts a local image file to base64 data.`
@@ -109,7 +128,10 @@ The **Detect** method takes an image of a subject and **returns various attribut
 $image       = '/images/myphotos/myphoto123.png';
 (or) 
 $image      = 'iVBORw0KGgoAAA ... ABJRU5ErkJggg==\r\n';
-$response   = $Kairos->detect($image);
+$argumentArray =  array(
+    "image" => $image
+);
+$response   = $Kairos->detect($argumentArray);
 ```
 
 `The SDK also includes a file upload field, which converts a local image file to base64 data.`
@@ -124,7 +146,12 @@ $image       = '/images/myphotos/myphoto123.png';
 $image      = 'iVBORw0KGgoAAA ... ABJRU5ErkJggg==\r\n';
 $subject_id = 'elizabeth';
 $gallery_name = 'friends1';
-$response   = $Kairos->detect($image);
+$argumentArray =  array(
+    "image" => $image,
+    "subject_id" => $subject_id,
+    "gallery_name" => $gallery_name
+);
+$response   = $Kairos->detect($argumentArray);
 ```
 `The SDK also includes a file upload field, which converts a local image file to base64 data.`
 
