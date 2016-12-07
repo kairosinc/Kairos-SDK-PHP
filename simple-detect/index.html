@@ -1,0 +1,34 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<form method="post" enctype="multipart/form-data" action="form-post.php"> 
+    <input type="file" id="imageFile" name="file"><button type="button" id="testDetect">Submit</button>
+</form>
+
+<script>
+$("#testDetect").click(function () {
+    var file = $('#imageFile')[0].files[0]; 
+    var reader  = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = function () {
+      var imageData = parseImageData(reader.result);
+      var data = {};
+      data.image = imageData;
+      $.ajax({
+	    url      : "http://foo.com/form-post.php",
+	    type     : "POST",
+	    data     :  data,
+	    dataType : 'text'
+	  }).done(function(response) {
+	    console.log(response)
+	  })
+    }
+}); 
+var parseImageData = function(imageData) {
+    imageData = imageData.replace("data:image/jpeg;base64,", "");
+    imageData = imageData.replace("data:image/jpg;base64,", "");
+    imageData = imageData.replace("data:image/png;base64,", "");
+    imageData = imageData.replace("data:image/gif;base64,", "");
+    imageData = imageData.replace("data:image/bmp;base64,", "");
+    return imageData;
+}
+</script>
