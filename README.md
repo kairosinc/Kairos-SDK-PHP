@@ -151,7 +151,7 @@ $argumentArray =  array(
     "subject_id" => $subject_id,
     "gallery_name" => $gallery_name
 );
-$response   = $Kairos->detect($argumentArray);
+$response   = $Kairos->verify($argumentArray);
 ```
 `The SDK also includes a file upload field, which converts a local image file to base64 data.`
 
