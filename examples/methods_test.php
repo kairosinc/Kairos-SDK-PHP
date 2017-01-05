@@ -114,6 +114,10 @@ include('../Kairos.php');
               </form>
           </div>
         </div>
+        <div class="row">
+          <h5>Time:</h5>
+          <div id="timer" class="col-lg-8"></div>
+        </div>
       	<div class="row">
         	<h5>Response:</h5>
         	<img src="assets/images/loading.gif" id="loader">

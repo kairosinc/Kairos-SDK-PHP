@@ -20,6 +20,7 @@ methods_test = {
         ajaxValidateKeys(auth, "viewGalleries", args);
       });
       $("#testViewGalleries").click(function () {
+        self.startTimer();
         $("#loader").show();
         $("#view_data").empty();
         var auth = {"app_id": $(".app_id").val(), "app_key": $(".app_key").val()};
@@ -29,6 +30,7 @@ methods_test = {
       $("#testEnroll").click(function () {
         $("#view_data").empty();
         if (self.validateMe($("#enrollForm")) == true) {
+          self.startTimer();
           $("#loader").show();
           var auth = {"app_id": $(".app_id").val(), "app_key": $(".app_key").val()};
           var args = {};
@@ -54,6 +56,7 @@ methods_test = {
       $("#testViewSubjectsInGallery").click(function () {
         $("#view_data").empty();
         if (self.validateMe($("#viewSubjectsInGalleryForm input")) == true) {
+          self.startTimer();
           $("#loader").show();
           var auth = {"app_id": $(".app_id").val(), "app_key": $(".app_key").val()};
           var args = {};
@@ -65,6 +68,7 @@ methods_test = {
       $("#testRemoveSubjectFromGallery").click(function () {
         $("#view_data").empty();
         if (self.validateMe($("#removeSubjectFromGalleryForm input")) == true) {
+          self.startTimer();
           $("#loader").show();
             var auth = {"app_id": $(".app_id").val(), "app_key": $(".app_key").val()};
             var args = {};
@@ -77,6 +81,7 @@ methods_test = {
       $("#testRemoveGallery").click(function () {
         $("#view_data").empty();
         if (self.validateMe($("#removeGalleryForm input")) == true) {
+          self.startTimer();
           $("#loader").show();
             var auth = {"app_id": $(".app_id").val(), "app_key": $(".app_key").val()};
             var args = {};
@@ -88,6 +93,7 @@ methods_test = {
       $("#testRecognize").click(function () {
         $("#view_data").empty();
         if (self.validateMe($("#recognizeForm")) == true) {
+          self.startTimer();
           $("#loader").show();
             var auth = {"app_id": $(".app_id").val(), "app_key": $(".app_key").val()};
             var args = {};
@@ -112,6 +118,7 @@ methods_test = {
       $("#testDetect").click(function () {
         $("#view_data").empty();
         if (self.validateMe($("#detectForm")) == true) {
+          self.startTimer();
           $("#loader").show();
           var auth = {"app_id": $(".app_id").val(), "app_key": $(".app_key").val()};
           var args = {};
@@ -119,7 +126,11 @@ methods_test = {
             var file = $('#detectForm .image-upload')[0].files[0]; 
             var reader  = new FileReader();
             reader.readAsDataURL(file);
+            var a = new Date();
+            console.log(a.getTime())
             reader.onloadend = function () {
+              var b = new Date();
+              console.log(b.getTime())
               var fileData = parseImageData(reader.result);
               args.image = fileData;
               ajaxCallPhp(auth, "detect", args);
@@ -135,6 +146,7 @@ methods_test = {
       $("#testVerify").click(function () {
         $("#view_data").empty();
         if (self.validateMe($("#verifyForm")) == true) {
+          self.startTimer();
           $("#loader").show();
           var auth = {"app_id": $(".app_id").val(), "app_key": $(".app_key").val()};
           var args = {};
@@ -189,6 +201,14 @@ methods_test = {
       }
       return isValid;
     },
+    startTimer: function() {
+      $(".timer").html("");
+      var currTime = 0;
+      self.timer = setInterval(function(){
+        currTime ++;
+        $("#timer").html(currTime + " sec");
+      },1000);
+    }
 }
 var ajaxValidateKeys = function(auth, phpMethod, args) {
   var data = {};
@@ -225,6 +245,7 @@ var ajaxCallPhp = function(auth, phpMethod, args) {
     data     :  data,
     dataType : 'text'
   }).done(function(response) {
+    clearInterval(self.timer);
     $("#view_data").empty();
     $("#view_data").html(response);
     $("#loader").hide();
